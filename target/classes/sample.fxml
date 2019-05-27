@@ -1,0 +1,150 @@
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<TabPane fx:controller="sample.Controller" xmlns:fx="http://javafx.com/fxml" tabMinWidth="100" fx:id="border">
+    <Tab text="Preprocessing" closable="false">
+        <BorderPane>
+            <left>
+                <VBox spacing="20">
+                    <padding>
+                        <Insets top="20" left="10"/>
+                    </padding>
+                    <Button text="Okay" prefWidth="90"/>
+                    <Button text="Okay1" prefWidth="90"/>
+                </VBox>
+            </left>
+            <bottom>
+                <HBox spacing="10" alignment="bottom_right">
+                    <padding>
+                        <Insets bottom="10" right="10"/>
+                    </padding>
+                    <Button text="Okay" prefWidth="90"/>
+                    <Button text="Help" prefWidth="90"/>
+                    <Button text="Cancel" prefWidth="90" onAction="#closeApplication"/>
+                </HBox>
+            </bottom>
+        </BorderPane>
+    </Tab>
+
+    <Tab text="Feature Selection" closable="false">
+        <BorderPane>
+            <center>
+                <HBox>
+                    <VBox spacing="20">
+                        <padding>
+                            <Insets top="20" left="50"/>
+                        </padding>
+                        <Label text="Features Selection"/>
+                        <ComboBox prefWidth="100" fx:id="comboBox" onAction="#setFeatureCount">
+
+                        </ComboBox>
+                        <RadioButton text="Fisher" fx:id="fisher" onAction="#selectFisher"/>
+                        <RadioButton text="SFS" fx:id="sfs" onAction="#selectSfs"/>
+                    </VBox>
+                    <VBox spacing="20">
+                        <padding>
+                            <Insets top="20" left="50"/>
+                        </padding>
+                        <Button text="Compute" prefWidth="90" onAction="#compute"/>
+                    </VBox>
+                </HBox>
+            </center>
+            <left>
+                <VBox spacing="20">
+                    <padding>
+                        <Insets top="20" left="10"/>
+                    </padding>
+                    <Button text="Open File" prefWidth="90" onAction="#openFile"/>
+                    <Button text="Show Data" prefWidth="90" onAction="#printText"/>
+                </VBox>
+            </left>
+            <right>
+                <VBox spacing="20">
+                    <padding>
+                        <Insets top="20" right="10"/>
+                    </padding>
+                    <TextArea fx:id="textArea" prefWidth="300" editable="false">
+
+                    </TextArea>
+                </VBox>
+            </right>
+            <bottom>
+                <HBox spacing="10" alignment="bottom_right">
+                    <padding>
+                        <Insets bottom="10" right="10"/>
+                    </padding>
+                    <Button text="Okay" prefWidth="90"/>
+                    <Button text="Help" prefWidth="90"/>
+                    <Button text="Cancel" prefWidth="90" onAction="#closeApplication"/>
+                </HBox>
+            </bottom>
+        </BorderPane>
+    </Tab>
+
+    <Tab text="Clasifiers" closable="false">
+        <BorderPane>
+            <center>
+                <HBox>
+                    <VBox spacing="20">
+                        <padding>
+                            <Insets top="20" left="30"/>
+                        </padding>
+                        <Label text="Classifier Selection"/>
+                        <ComboBox prefWidth="100" fx:id="clasifiersComboBox" onAction="#setClasifierMethod">
+
+                        </ComboBox>
+                        <ComboBox prefWidth="100" fx:id="knumbersComboBox" onAction="#setKfeatures">
+
+                        </ComboBox>
+                    </VBox>
+                    <VBox spacing="20">
+                        <padding>
+                            <Insets top="20" left="30"/>
+                        </padding>
+                        <Button text="Train" prefWidth="90" onAction="#train"/>
+                        <Label text="Percentage"/>
+                        <TextField fx:id="percentage">
+
+                        </TextField>
+                    </VBox>
+                    <VBox spacing="20">
+                        <padding>
+                            <Insets top="20" left="30"/>
+                        </padding>
+                        <Button text="Execute" prefWidth="90" onAction="#clasify"/>
+                    </VBox>
+                </HBox>
+            </center>
+            <left>
+                <VBox spacing="20">
+                    <padding>
+                        <Insets top="20" left="10"/>
+                    </padding>
+
+                    <Button text="Open File" prefWidth="90" onAction="#openFile"/>
+                    <Button text="Save File" prefWidth="90"/>
+                </VBox>
+            </left>
+            <right>
+                <VBox spacing="20">
+                    <padding>
+                        <Insets top="20" right="10"/>
+                    </padding>
+                    <TextArea prefWidth="250" fx:id="textArea2" editable="false">
+
+                    </TextArea>
+                </VBox>
+            </right>
+            <bottom>
+                <HBox spacing="10" alignment="bottom_right">
+                    <padding>
+                        <Insets bottom="10" right="10"/>
+                    </padding>
+                    <Button text="Okay" prefWidth="90"/>
+                    <Button text="Help" prefWidth="90"/>
+                    <Button text="Cancel" prefWidth="90" onAction="#closeApplication"/>
+                </HBox>
+            </bottom>
+        </BorderPane>
+    </Tab>
+</TabPane>
