@@ -1,7 +1,7 @@
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<TabPane fx:controller="sample.Controller" xmlns:fx="http://javafx.com/fxml" tabMinWidth="100" fx:id="border">
+<TabPane fx:controller="sample.view.Controller" xmlns:fx="http://javafx.com/fxml" tabMinWidth="100" fx:id="border">
     <Tab text="Preprocessing" closable="false">
         <BorderPane>
             <left>

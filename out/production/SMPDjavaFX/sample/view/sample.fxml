@@ -3,12 +3,11 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
-<Pane fx:controller="sample.Controller" xmlns:fx="http://javafx.com/fxml">
+<Pane fx:controller="sample.view.Controller" xmlns:fx="http://javafx.com/fxml">
 <VBox>
-    <TextArea fx:id="textArea" prefWidth="300" editable="false" wrapText="true">
+    <TextArea fx:id="textArea" prefWidth="300" editable="false" wrapText="true" >
     </TextArea>
-    <TextField fx:id="b"/>
+    <TextField fx:id="b" onAction="#onButtonClicked"/>
     <Button text="Send" prefWidth="90" onAction="#onButtonClicked"/>
 </VBox>
-
 </Pane>
