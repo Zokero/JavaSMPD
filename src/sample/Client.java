@@ -6,6 +6,8 @@ import org.apache.xmlrpc.client.XmlRpcClientConfigImpl;
 import org.apache.xmlrpc.client.XmlRpcCommonsTransportFactory;
 
 import java.net.URL;
+import java.util.UUID;
+import java.util.Vector;
 
 public class Client {
 
@@ -19,11 +21,16 @@ public class Client {
             client.setTransportFactory(
                     new XmlRpcCommonsTransportFactory(client));
             client.setConfig(config);
+            String userID = UUID.randomUUID().toString().substring(0, 8);
+            Vector<Object> params = new Vector<>();
+            params.add(userID);
+            System.out.println("Client " + userID);
+            client.execute("Chat.addUser", params);
+            params.clear();
+            client.execute("Chat.readMessage", params);
+            client.execute("Chat.sendMessage", params);
+            Application.launch(ChatView.class, args);
 
-//            Object[] params = new Object[]{};
-//            Integer result = (Integer) client.execute("ChatView.start", params);
-            Application.launch(ChatView.class,args);
-            //System.out.println(result);
         } catch (Exception e) {
             e.printStackTrace();
         }

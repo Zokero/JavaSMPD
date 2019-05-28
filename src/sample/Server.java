@@ -14,14 +14,13 @@ public class Server {
             XmlRpcServer xmlRpcServer = webServer.getXmlRpcServer();
 
             PropertyHandlerMapping phm = new PropertyHandlerMapping();
-            phm.addHandler("ChatView", ChatView.class);
+            phm.addHandler("Chat", sample.Chat.class);
             xmlRpcServer.setHandlerMapping(phm);
 
             XmlRpcServerConfigImpl serverConfig =
                     (XmlRpcServerConfigImpl) xmlRpcServer.getConfig();
             serverConfig.setEnabledForExtensions(true);
             serverConfig.setContentLengthOptional(false);
-
             webServer.start();
         }
         catch (Exception e) {

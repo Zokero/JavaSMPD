@@ -6,11 +6,9 @@
 <Pane fx:controller="sample.Controller" xmlns:fx="http://javafx.com/fxml">
 <VBox>
     <TextArea fx:id="textArea" prefWidth="300" editable="false" wrapText="true">
-
     </TextArea>
     <TextField fx:id="b"/>
-    <Button text="Okay1" prefWidth="90" onAction="#onButtonClicked"/>
-
+    <Button text="Send" prefWidth="90" onAction="#onButtonClicked"/>
 </VBox>
 
 </Pane>
