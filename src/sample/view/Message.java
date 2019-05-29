@@ -8,6 +8,11 @@ public class Message {
     public Message() {
     }
 
+    public Message(String messageText, String timestamp) {
+        this.messageText = messageText;
+        this.timestamp = timestamp;
+    }
+
     public Message(String messageText, String timestamp, String author) {
         this.messageText = messageText;
         this.timestamp = timestamp;

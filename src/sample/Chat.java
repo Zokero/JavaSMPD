@@ -1,23 +1,47 @@
 package sample;
 
+import sample.view.Message;
+
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.*;
 
 public class Chat {
+    private Map<String, Message> messageMap = new HashMap<>();
 
     public String writeToFile(String message) {
-//        for (Object m : message) {
-            try {
-                FileWriter fstream = new FileWriter("C:\\Users\\pikuk1\\Documents\\git-repos\\JavaSMPD\\src\\sample\\data.txt", true);
-                BufferedWriter out = new BufferedWriter(fstream);
-                out.write(message);
-                out.newLine();
-                out.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-//        }
-        return "";
+        try {
+            FileWriter fstream = new FileWriter("E:\\git-repos\\JavaSMPD\\src\\sample\\data.txt", true);
+            BufferedWriter out = new BufferedWriter(fstream);
+            out.write(message);
+            out.newLine();
+            out.close();
+            String[] xxx = message.split(" ");
+            System.out.println(xxx[1]);
+            //List<String> array = Arrays.asList(xxx);
+            messageMap.put(xxx[2], new Message(xxx[3], xxx[0] + " " + xxx[1]));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return message;
+    }
+
+    public String readFromMap(String userName) {
+        System.out.println("sssssss");
+//        if (!messageMap.isEmpty()) {
+        try {
+            System.out.println("Not empty map");
+            Message msg = messageMap.get(userName);
+            System.out.println(msg.getMessageText());
+            return msg.getTimestamp() + " " + msg.getMessageText();
+        }catch (Exception e){
+
+
+
+//        } else {
+            System.out.println("Empty map");
+            return "";
+        }
     }
 }

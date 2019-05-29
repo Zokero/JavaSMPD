@@ -11,3 +11,4 @@
     <Button text="Send" prefWidth="90" onAction="#onButtonClicked"/>
 </VBox>
 </Pane>
+
