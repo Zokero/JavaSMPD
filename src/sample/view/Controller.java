@@ -27,5 +27,10 @@ public class Controller {
             b.clear();
         }
     }
+
+//    public static void printOnTextArea() {
+//        textArea.appendText(Client.xxxx);
+//    }
+
 }
 

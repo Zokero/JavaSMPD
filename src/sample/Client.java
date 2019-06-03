@@ -13,6 +13,7 @@ import java.util.Vector;
 
 public class Client {
     public static XmlRpcClient client;
+    public static String xxxx;
 
     public static void main(String[] args) {
         try {
@@ -25,8 +26,13 @@ public class Client {
             client.setConfig(config);
             new Thread(() -> {
                 while (true) {
+                    try {
+                        Thread.sleep(3000);
+                        getFromServer(Controller.userID);
+                    } catch (InterruptedException | NullPointerException e) {
+                        e.printStackTrace();
+                    }
 
-                    getFromServer(Controller.userID);
                 }
             }).start();
 
@@ -39,11 +45,13 @@ public class Client {
         Vector<Object> params = new Vector<>();
         String recievedMessage = "";
         try {
-            Thread.sleep(3000);
-            params.add(string);
+            params.add(string + "\n");
             recievedMessage = (String)client.execute("Chat.readFromMap", params);
+            xxxx = recievedMessage;
+//            Controller.printOnTextArea();
+            System.out.println(recievedMessage);
             params.clear();
-        } catch (XmlRpcException | InterruptedException e) {
+        } catch (XmlRpcException e) {
             e.printStackTrace();
         }
         return recievedMessage;
@@ -52,11 +60,10 @@ public class Client {
     public static void sendToServer(String string) {
         Vector<Object> params = new Vector<>();
         try {
-            Thread.sleep(1000);
             params.add(string);
             client.execute("Chat.writeToFile", params);
             params.clear();
-        } catch (XmlRpcException | InterruptedException e) {
+        } catch (XmlRpcException e) {
             e.printStackTrace();
         }
     }
