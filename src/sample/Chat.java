@@ -8,7 +8,7 @@ import java.io.IOException;
 import java.util.*;
 
 public class Chat {
-    private Map<String, Message> messageMap = new HashMap<>();
+    public Map<String, Message> messageMap = new HashMap<>();
 
     public String writeToFile(String message) {
         try {
@@ -28,20 +28,11 @@ public class Chat {
     }
 
     public String readFromMap(String userName) {
-        System.out.println("sssssss");
-//        if (!messageMap.isEmpty()) {
-        try {
-            System.out.println("Not empty map");
-            Message msg = messageMap.get(userName);
-            System.out.println(msg.getMessageText());
-            return msg.getTimestamp() + " " + msg.getMessageText();
-        }catch (Exception e){
 
+        Message msg = messageMap.get(userName);
+        System.out.println(msg.getMessageText());
+        System.out.println(msg.getTimestamp() + " " + msg.getMessageText());
+        return msg.getTimestamp() + " " + msg.getMessageText();
 
-
-//        } else {
-            System.out.println("Empty map");
-            return "";
-        }
     }
 }
