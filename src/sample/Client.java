@@ -4,6 +4,7 @@ import org.apache.xmlrpc.XmlRpcException;
 import org.apache.xmlrpc.client.XmlRpcClient;
 import org.apache.xmlrpc.client.XmlRpcClientConfigImpl;
 import org.apache.xmlrpc.client.XmlRpcCommonsTransportFactory;
+import sample.view.Message;
 
 import java.net.URL;
 import java.util.Vector;
@@ -26,13 +27,12 @@ public class Client {
         }
     }
 
-    public String getFromServer(String string) {
+    public String getFromServer(String uuid) {
         Vector<Object> params = new Vector<>();
         String receivedStringFromServer = "";
         try {
-            params.add(string + "\n");
+            params.add(uuid);
             receivedStringFromServer = (String) client.execute("Chat.readFromMap", params);
-            receivedString = receivedStringFromServer;
             params.clear();
         } catch (XmlRpcException e) {
             e.printStackTrace();
@@ -40,10 +40,12 @@ public class Client {
         return receivedStringFromServer;
     }
 
-    public void sendToServer(String string) {
+    public void sendToServer(Message message) {
         Vector<Object> params = new Vector<>();
         try {
-            params.add(string);
+            params.addElement(message.getTimestamp());
+            params.addElement(message.getMessageText());
+            params.addElement(message.getUuid());
             client.execute("Chat.writeToFile", params);
             params.clear();
         } catch (XmlRpcException e) {

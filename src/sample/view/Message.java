@@ -3,21 +3,12 @@ package sample.view;
 public class Message {
     private String messageText;
     private String timestamp;
-    private String author;
+    private String uuid;
 
-    public Message() {
-    }
-
-    public Message(String messageText, String timestamp) {
+    public Message(String messageText, String timestamp, String uuid) {
         this.messageText = messageText;
         this.timestamp = timestamp;
-        this.author = "";
-    }
-
-    public Message(String messageText, String timestamp, String author) {
-        this.messageText = messageText;
-        this.timestamp = timestamp;
-        this.author = author;
+        this.uuid = uuid;
     }
 
     public String getMessageText() {
@@ -28,13 +19,12 @@ public class Message {
         return timestamp;
     }
 
-    public String getAuthor() {
-        return author;
+    public String getUuid() {
+        return uuid;
     }
 
     @Override
     public String toString() {
-        return timestamp + " " + author + " " + messageText;
-
+        return messageText + " "+ uuid +" " + timestamp;
     }
 }

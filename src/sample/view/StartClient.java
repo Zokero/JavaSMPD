@@ -16,7 +16,7 @@ import java.util.Date;
 import java.util.UUID;
 
 public class StartClient extends Application {
-    private static String userID = UUID.randomUUID().toString().substring(0, 8);
+    public static String userID = UUID.randomUUID().toString().substring(0, 8);
     @FXML
     TextArea textArea;
     @FXML
@@ -36,10 +36,10 @@ public class StartClient extends Application {
         Runnable task = () -> {
             while (true) {
                 try {
-                    Thread.sleep(4000);
+                    Thread.sleep(100);
                     Platform.runLater(() -> {
                         String str = client.getFromServer(userID);
-                        System.out.println(str);
+                        textArea.clear();
                         textArea.appendText(str);
                     });
 
@@ -57,8 +57,7 @@ public class StartClient extends Application {
         if (!messageText.isEmpty()) {
             Timestamp timestamp = new Timestamp(new Date().getTime());
             Message message = new Message(messageText, timestamp.toString(), userID);
-            String string = message.getTimestamp() + " " + message.getAuthor() + ": " + message.getMessageText();
-            client.sendToServer(string);
+            client.sendToServer(message);
             textField.clear();
         }
     }
