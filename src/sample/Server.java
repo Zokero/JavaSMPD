@@ -16,7 +16,6 @@ public class Server {
             PropertyHandlerMapping phm = new PropertyHandlerMapping();
             phm.addHandler("Chat", sample.Chat.class);
             xmlRpcServer.setHandlerMapping(phm);
-
             XmlRpcServerConfigImpl serverConfig =
                     (XmlRpcServerConfigImpl) xmlRpcServer.getConfig();
             serverConfig.setEnabledForExtensions(true);
